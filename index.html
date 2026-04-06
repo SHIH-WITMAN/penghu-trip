@@ -5,331 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>澎湖四日遊 2026｜5/21–5/24</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    background: #f2f0eb;
-    color: #1a1a1a;
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  .container {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 20px 14px 60px;
-  }
-
-  /* ── Header ── */
-  .trip-header {
-    background: #fff;
-    border-radius: 20px;
-    padding: 22px 18px;
-    margin-bottom: 14px;
-    border: 1px solid #e4e1da;
-  }
-  .trip-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: #111;
-    letter-spacing: -0.5px;
-  }
-  .trip-sub {
-    font-size: 14px;
-    color: #888;
-    margin-top: 5px;
-  }
-  .pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 14px;
-  }
-  .pill {
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-weight: 600;
-  }
-  .p-green  { background: #e2f5d0; color: #236b08; }
-  .p-amber  { background: #fef0cc; color: #7a4800; }
-  .p-blue   { background: #daeaff; color: #1a48c4; }
-  .p-purple { background: #ece8ff; color: #5018b8; }
-
-  /* ── Notice ── */
-  .notice {
-    background: #daeaff;
-    border-radius: 14px;
-    padding: 13px 16px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    color: #1a48c4;
-    line-height: 1.7;
-    font-weight: 500;
-  }
-
-  /* ── Day card ── */
-  .day-card {
-    background: #fff;
-    border-radius: 20px;
-    margin-bottom: 14px;
-    border: 1px solid #e4e1da;
-    overflow: hidden;
-  }
-  .day-head {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 16px 18px;
-    border-bottom: 1px solid #f0ede6;
-  }
-  .day-num {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
-  .day-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111;
-    line-height: 1.3;
-  }
-  .day-sub-txt {
-    font-size: 12px;
-    color: #999;
-    margin-top: 3px;
-  }
-
-  /* ── Timeline ── */
-  .timeline { padding: 16px 18px; }
-  .trow {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-  .trow:last-child { margin-bottom: 0; }
-
-  .tleft {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    min-width: 48px;
-    flex-shrink: 0;
-  }
-  .ttime {
-    font-size: 12px;
-    color: #aaa;
-    white-space: nowrap;
-    font-weight: 500;
-    padding-top: 2px;
-  }
-  .tdot-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    padding-top: 2px;
-  }
-  .tdot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .tline {
-    width: 1.5px;
-    background: #e8e4dc;
-    flex: 1;
-    margin-top: 4px;
-    min-height: 20px;
-  }
-
-  .tbody { flex: 1; }
-  .ttitle {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111;
-    line-height: 1.4;
-  }
-  .tnote {
-    font-size: 13px;
-    color: #666;
-    margin-top: 5px;
-    line-height: 1.75;
-  }
-  .tag {
-    display: inline-block;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-top: 7px;
-    font-weight: 600;
-  }
-
-  /* ── Alt / Warn box ── */
-  .alt-box {
-    margin: 4px 18px 18px;
-    background: #fef7e6;
-    border-radius: 14px;
-    padding: 13px 15px;
-    border-left: 3px solid #f0a500;
-    border-radius: 0 14px 14px 0;
-  }
-  .alt-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #7a4800;
-    margin-bottom: 6px;
-  }
-  .alt-body {
-    font-size: 13px;
-    color: #92600a;
-    line-height: 1.8;
-  }
-
-  .warn-box {
-    margin: 4px 18px 18px;
-    background: #fff4e5;
-    border-left: 3px solid #f59e0b;
-    border-radius: 0 12px 12px 0;
-    padding: 10px 14px;
-    font-size: 13px;
-    color: #92600a;
-    font-weight: 500;
-  }
-
-  /* ── Veg table ── */
-  .veg-card {
-    background: #fff;
-    border-radius: 20px;
-    border: 1px solid #e4e1da;
-    overflow: hidden;
-    margin-bottom: 14px;
-  }
-  .veg-head {
-    background: #e2f5d0;
-    padding: 14px 18px;
-  }
-  .veg-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: #236b08;
-  }
-  .veg-subtitle {
-    font-size: 12px;
-    color: #4a8a1a;
-    margin-top: 3px;
-  }
-  .veg-item {
-    padding: 15px 18px;
-    border-bottom: 1px solid #f2f0eb;
-  }
-  .veg-item:last-child { border-bottom: none; }
-  .veg-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111;
-  }
-  .veg-info {
-    font-size: 13px;
-    color: #666;
-    margin-top: 5px;
-    line-height: 1.75;
-  }
-  .badge-open {
-    display: inline-block;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-top: 7px;
-    background: #e2f5d0;
-    color: #236b08;
-    font-weight: 600;
-  }
-  .badge-warn {
-    display: inline-block;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-top: 7px;
-    background: #fff0cc;
-    color: #7a4800;
-    font-weight: 600;
-  }
-
-  /* ── Tips ── */
-  .tips-card {
-    background: #fff;
-    border-radius: 20px;
-    border: 1px solid #e4e1da;
-    overflow: hidden;
-  }
-  .tips-head {
-    background: #ece8ff;
-    padding: 14px 18px;
-  }
-  .tips-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: #5018b8;
-  }
-  .tips-item {
-    display: flex;
-    gap: 12px;
-    padding: 14px 18px;
-    border-bottom: 1px solid #f2f0eb;
-    align-items: flex-start;
-  }
-  .tips-item:last-child { border-bottom: none; }
-  .tips-num {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #ece8ff;
-    color: #5018b8;
-    font-size: 12px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .tips-text {
-    font-size: 13px;
-    color: #444;
-    line-height: 1.75;
-    flex: 1;
-  }
-  .tips-text strong {
-    color: #111;
-    font-weight: 700;
-  }
-
-  /* ── Footer ── */
-  .footer {
-    text-align: center;
-    font-size: 12px;
-    color: #bbb;
-    margin-top: 24px;
-    padding-bottom: 10px;
-  }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f2f0eb;color:#1a1a1a;font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;}
+.tab-bar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e4e1da;display:flex;}
+.tab-btn{flex:1;padding:13px 6px;font-size:13px;font-weight:700;color:#aaa;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;line-height:1.3;text-align:center;}
+.tab-btn.active{color:#1a48c4;border-bottom-color:#1a48c4;}
+.page{display:none;}.page.active{display:block;}
+.container{max-width:520px;margin:0 auto;padding:18px 14px 60px;}
+.trip-header{background:#fff;border-radius:20px;padding:20px 18px;margin-bottom:14px;border:1px solid #e4e1da;}
+.trip-title{font-size:22px;font-weight:800;color:#111;letter-spacing:-0.5px;}
+.trip-sub{font-size:13px;color:#888;margin-top:4px;}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.pill{font-size:12px;padding:5px 12px;border-radius:20px;font-weight:600;}
+.p-green{background:#e2f5d0;color:#236b08;}.p-amber{background:#fef0cc;color:#7a4800;}
+.p-blue{background:#daeaff;color:#1a48c4;}.p-purple{background:#ece8ff;color:#5018b8;}
+.p-teal{background:#d0f5ee;color:#0a6b52;}
+.notice{background:#daeaff;border-radius:14px;padding:13px 16px;margin-bottom:14px;font-size:14px;color:#1a48c4;line-height:1.7;font-weight:500;}
+.notice-green{background:#e2f5d0;border-radius:14px;padding:13px 16px;margin-bottom:14px;font-size:14px;color:#236b08;line-height:1.7;font-weight:500;}
+.day-card{background:#fff;border-radius:20px;margin-bottom:14px;border:1px solid #e4e1da;overflow:hidden;}
+.day-head{display:flex;align-items:center;gap:13px;padding:15px 18px;border-bottom:1px solid #f0ede6;}
+.day-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.day-name{font-size:16px;font-weight:700;color:#111;line-height:1.3;}
+.day-sub-txt{font-size:12px;color:#999;margin-top:3px;}
+.timeline{padding:16px 18px;}
+.trow{display:flex;gap:12px;margin-bottom:18px;}.trow:last-child{margin-bottom:0;}
+.tleft{display:flex;flex-direction:column;align-items:flex-end;min-width:48px;flex-shrink:0;}
+.ttime{font-size:12px;color:#aaa;white-space:nowrap;font-weight:500;padding-top:2px;}
+.tdot-wrap{display:flex;flex-direction:column;align-items:center;flex:1;padding-top:2px;}
+.tdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.tline{width:1.5px;background:#e8e4dc;flex:1;margin-top:4px;min-height:20px;}
+.tbody{flex:1;}
+.ttitle{font-size:15px;font-weight:700;color:#111;line-height:1.4;}
+.tnote{font-size:13px;color:#666;margin-top:5px;line-height:1.75;}
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:10px;margin-top:7px;font-weight:600;}
+.alt-box{margin:4px 18px 18px;background:#fef7e6;border-left:3px solid #f0a500;border-radius:0 14px 14px 0;padding:13px 15px;}
+.alt-title{font-size:13px;font-weight:700;color:#7a4800;margin-bottom:6px;}
+.alt-body{font-size:13px;color:#92600a;line-height:1.8;}
+.warn-box{margin:4px 18px 18px;background:#fff4e5;border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;padding:10px 14px;font-size:13px;color:#92600a;font-weight:500;}
+.tip-box{margin:4px 18px 18px;background:#e2f5d0;border-left:3px solid #52a827;border-radius:0 12px 12px 0;padding:10px 14px;font-size:13px;color:#236b08;font-weight:500;}
+.veg-card{background:#fff;border-radius:20px;border:1px solid #e4e1da;overflow:hidden;margin-bottom:14px;}
+.veg-head{background:#e2f5d0;padding:14px 18px;}
+.veg-title{font-size:16px;font-weight:800;color:#236b08;}
+.veg-subtitle{font-size:12px;color:#4a8a1a;margin-top:3px;}
+.veg-item{padding:15px 18px;border-bottom:1px solid #f2f0eb;}
+.veg-item:last-child{border-bottom:none;}
+.veg-name{font-size:15px;font-weight:700;color:#111;}
+.veg-info{font-size:13px;color:#666;margin-top:5px;line-height:1.75;}
+.badge-open{display:inline-block;font-size:11px;padding:3px 10px;border-radius:10px;margin-top:7px;background:#e2f5d0;color:#236b08;font-weight:600;}
+.badge-warn{display:inline-block;font-size:11px;padding:3px 10px;border-radius:10px;margin-top:7px;background:#fff0cc;color:#7a4800;font-weight:600;}
+.tips-card{background:#fff;border-radius:20px;border:1px solid #e4e1da;overflow:hidden;margin-bottom:14px;}
+.tips-head{background:#ece8ff;padding:14px 18px;}
+.tips-title{font-size:16px;font-weight:800;color:#5018b8;}
+.tips-item{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid #f2f0eb;align-items:flex-start;}
+.tips-item:last-child{border-bottom:none;}
+.tips-num{width:24px;height:24px;border-radius:50%;background:#ece8ff;color:#5018b8;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.tips-text{font-size:13px;color:#444;line-height:1.75;flex:1;}
+.tips-text strong{color:#111;font-weight:700;}
+.footer{text-align:center;font-size:12px;color:#bbb;margin-top:24px;padding-bottom:10px;}
 </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- Header -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab(0)">方案一<br><span style="font-weight:400;font-size:11px;">七美跳島版</span></button>
+  <button class="tab-btn" onclick="switchTab(1)">方案二<br><span style="font-weight:400;font-size:11px;">南北環深度版</span></button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page0">
+<div class="container">
   <div class="trip-header">
-    <div class="trip-title">澎湖四日遊 2026</div>
+    <div class="trip-title">方案一：七美跳島版</div>
     <div class="trip-sub">5/21（四）— 5/24（日）｜住澎澄飯店 x3 晚</div>
     <div class="pills">
       <span class="pill p-green">全程素食</span>
@@ -338,323 +84,158 @@
       <span class="pill p-purple">澎澄飯店</span>
     </div>
   </div>
+  <div class="notice">🎆 花火節 5/21（四）21:00 觀音亭<br>🚢 七美跳島請提前 1–2 個月訂票，旺季一票難求</div>
 
-  <!-- Notice -->
-  <div class="notice">
-    🎆 花火節 5/21（四）21:00 觀音亭<br>
-    🚢 七美跳島請提前 1–2 個月訂票，旺季一票難求
-  </div>
-
-  <!-- DAY 1 -->
   <div class="day-card">
-    <div class="day-head">
-      <div class="day-num" style="background:#e2f5d0;color:#236b08;">1</div>
-      <div>
-        <div class="day-name">5/21 四｜抵達 + 花火節</div>
-        <div class="day-sub-txt">高雄小港 → 澎湖馬公</div>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-num" style="background:#e2f5d0;color:#236b08;">1</div><div><div class="day-name">5/21 四｜抵達 + 花火節</div><div class="day-sub-txt">高雄小港 → 澎湖馬公</div></div></div>
     <div class="timeline">
-      <div class="trow">
-        <div class="tleft"><span class="ttime">11:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">小港機場出發</div>
-          <div class="tnote">花火節旺季建議提早到機場</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">12:15</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">抵達馬公機場</div>
-          <div class="tnote">取車 / 租機車後前往午餐</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">12:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">午餐（擇一）</div>
-          <div class="tnote">① Yummy 楊米植物性素食<br>　民族路，評分 5.0，10:30–13:30<br>② 蔡記蔬菜食堂<br>　文昌街，秤重自助，10:30–14:00</div>
-          <span class="tag p-green">素食</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">馬公市區漫步</div>
-          <div class="tnote">媽宮古城 → 中央老街<br>→ 媽祖觀光文化園區（全球最高媽祖像 66m）</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">Check in 澎澄飯店</div>
-          <div class="tnote">通禾路 168 號，近港口，四星</div>
-          <span class="tag p-purple">住宿</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">19:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">晚餐：常和 Building & Light Meal</div>
-          <div class="tnote">治平路 26-1 號｜週四有開 11:30–20:30</div>
-          <span class="tag p-green">全素</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">20:30</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">🎆 花火節 七龍珠Z 主題</div>
-          <div class="tnote">觀音亭休閒園區｜21:00 正式施放<br>建議 20:30 前到場卡位<br>10 分鐘煙火 ＋ 10 分鐘無人機<br>孫悟空、神龍現身澎湖夜空！</div>
-          <span class="tag p-amber">花火節必看</span>
-        </div>
-      </div>
+      <div class="trow"><div class="tleft"><span class="ttime">11:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">小港機場出發</div><div class="tnote">花火節旺季建議提早到機場</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:15</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">抵達馬公機場</div><div class="tnote">取車 / 租機車後前往午餐</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐（擇一）</div><div class="tnote">① Yummy 楊米植物性素食｜民族路，評分 5.0，10:30–13:30<br>② 蔡記蔬菜食堂｜文昌街，秤重自助，10:30–14:00</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">馬公市區漫步</div><div class="tnote">媽宮古城 → 中央老街 → 媽祖觀光文化園區（全球最高媽祖像 66m）</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">Check in 澎澄飯店</div><div class="tnote">通禾路 168 號，近港口，四星</div><span class="tag p-purple">住宿</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">19:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">晚餐：常和 Building & Light Meal</div><div class="tnote">治平路 26-1 號｜週四有開 11:30–20:30</div><span class="tag p-green">全素</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">20:30</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div></div></div><div class="tbody"><div class="ttitle">🎆 花火節 七龍珠Z 主題</div><div class="tnote">觀音亭休閒園區｜21:00 施放<br>建議 20:30 前到場卡位<br>10 分鐘煙火 ＋ 10 分鐘無人機</div><span class="tag p-amber">花火節必看</span></div></div>
     </div>
   </div>
 
-  <!-- DAY 2 -->
   <div class="day-card">
-    <div class="day-head">
-      <div class="day-num" style="background:#daeaff;color:#1a48c4;">2</div>
-      <div>
-        <div class="day-name">5/22 五｜七美跳島一日遊</div>
-        <div class="day-sub-txt">主案：七美＋望安｜雨天備案：水族館</div>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-num" style="background:#daeaff;color:#1a48c4;">2</div><div><div class="day-name">5/22 五｜七美跳島一日遊</div><div class="day-sub-txt">主案：七美＋望安｜雨天備案：水族館</div></div></div>
     <div class="timeline">
-      <div class="trow">
-        <div class="tleft"><span class="ttime">07:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">前往南海遊客中心集合</div>
-          <div class="tnote">飯店出發約 10 分鐘</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">08:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">開船 馬公 → 七美島</div>
-          <div class="tnote">航行約 70–80 分鐘<br>確切開船時間前一天以 LINE 通知</div>
-          <span class="tag p-blue">跳島</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">10:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">七美島（停留約 2.5–3 小時）</div>
-          <div class="tnote">雙心石滬 · 大獅風景區 · 小台灣<br>龍埕 · 七美人塚｜租機車自由行</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">13:00</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">島上午餐（重要提醒）</div>
-          <div class="tnote">七美幾乎無素食！<br>請出發前在馬公準備好便當或乾糧帶上船</div>
-          <span class="tag p-amber">素食者注意</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">望安島（停留約 1.5 小時）</div>
-          <div class="tnote">綠蠵龜保育中心 · 中社古厝 · 網垵口沙灘</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">15:30</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">桶盤玄武岩巡航 → 回馬公</div>
-          <div class="tnote">約 15:00–15:30 抵達南海遊客中心</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">19:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">晚餐：常和 Building & Light Meal</div>
-          <div class="tnote">週五有開 11:30–20:30</div>
-          <span class="tag p-green">全素</span>
-        </div>
-      </div>
+      <div class="trow"><div class="tleft"><span class="ttime">07:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">前往南海遊客中心集合</div><div class="tnote">飯店過馬路即到，約 5 分鐘</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">08:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">開船 馬公 → 七美島</div><div class="tnote">航行約 70–80 分鐘｜確切時間前一天 LINE 通知</div><span class="tag p-blue">跳島</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">10:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">七美島（停留約 2.5–3 小時）</div><div class="tnote">雙心石滬 · 大獅風景區 · 小台灣 · 龍埕 · 七美人塚<br>租機車自由行（需附駕照）</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">13:00</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">島上午餐（重要）</div><div class="tnote">七美幾乎無素食！出發前在馬公打包便當或乾糧帶上船</div><span class="tag p-amber">素食者注意</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">望安島（停留約 1.5 小時）</div><div class="tnote">綠蠵龜保育中心 · 中社古厝 · 網垵口沙灘</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">15:30</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">桶盤玄武岩巡航 → 回馬公</div><div class="tnote">約 15:00–15:30 抵達南海遊客中心</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">19:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div><div class="tbody"><div class="ttitle">晚餐：常和 Building & Light Meal</div><div class="tnote">週五有開 11:30–20:30</div><span class="tag p-green">全素</span></div></div>
     </div>
-    <div class="alt-box">
-      <div class="alt-title">雨天備案 — 北環室內外行程</div>
-      <div class="alt-body">
-        上午：澎湖水族館（白沙鄉，09:00–17:00，室內）<br>
-        下午：跨海大橋 → 大菓葉柱狀玄武岩<br>
-        晚餐：常和（週五有開）
-      </div>
-    </div>
+    <div class="alt-box"><div class="alt-title">雨天備案 — 北環室內外行程</div><div class="alt-body">上午：澎湖水族館（白沙鄉，09:00–17:00，室內）<br>下午：跨海大橋 → 大菓葉柱狀玄武岩<br>晚餐：常和（週五有開）</div></div>
   </div>
 
-  <!-- DAY 3 -->
   <div class="day-card">
-    <div class="day-head">
-      <div class="day-num" style="background:#fef0cc;color:#7a4800;">3</div>
-      <div>
-        <div class="day-name">5/23 六｜北環 + 西嶼一日遊</div>
-        <div class="day-sub-txt">白沙鄉 → 西嶼鄉 → 馬公</div>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-num" style="background:#fef0cc;color:#7a4800;">3</div><div><div class="day-name">5/23 六｜北環 + 西嶼一日遊</div><div class="day-sub-txt">白沙鄉 → 西嶼鄉 → 馬公</div></div></div>
     <div class="timeline">
-      <div class="trow">
-        <div class="tleft"><span class="ttime">09:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">澎湖水族館</div>
-          <div class="tnote">白沙鄉，09:00–17:00<br>若 Day 2 已去，改往澎澎灘或北海遊客中心</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">11:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">跨海大橋 → 西嶼</div>
-          <div class="tnote">全台最長跨海橋，騎機車特別有感</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">12:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">午餐（返回馬公擇一）</div>
-          <div class="tnote">① Yummy 楊米｜週六有開，10:30–13:30<br>② 蔡記蔬菜食堂｜週六有開，10:30–14:00</div>
-          <span class="tag p-green">素食</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">大菓葉柱狀玄武岩</div>
-          <div class="tnote">西嶼鄉，全澎湖最壯觀玄武岩地景，評分 4.5</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">16:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">夢幻沙灘 Dream Beach</div>
-          <div class="tnote">西嶼鄉，水清沙白少人<br>夕陽最佳觀賞點，評分 4.5</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">晚餐：根果 Grassroots & Fruit</div>
-          <div class="tnote">文光路 131 號｜週六 18:00–23:00<br>獨立書店轉型素食，草本茶＋素食麵食<br>評分 4.9</div>
-          <span class="tag p-green">全素</span>
-        </div>
-      </div>
+      <div class="trow"><div class="tleft"><span class="ttime">09:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">澎湖水族館</div><div class="tnote">白沙鄉，09:00–17:00（若 Day 2 已去，改往澎澎灘）</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">11:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">跨海大橋 → 西嶼</div><div class="tnote">全台最長跨海橋，騎機車特別有感</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐（返回馬公）</div><div class="tnote">① Yummy 楊米｜週六 10:30–13:30<br>② 蔡記蔬菜食堂｜週六 10:30–14:00</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">大菓葉柱狀玄武岩</div><div class="tnote">西嶼鄉，全澎湖最壯觀玄武岩地景，評分 4.5</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">16:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">夢幻沙灘 Dream Beach</div><div class="tnote">西嶼鄉，水清沙白少人，夕陽最佳觀賞點</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div><div class="tbody"><div class="ttitle">晚餐：根果 Grassroots & Fruit</div><div class="tnote">文光路 131 號｜週六 18:00–23:00｜評分 4.9</div><span class="tag p-green">全素</span></div></div>
     </div>
     <div class="warn-box">⚠️ 常和週六公休，請改去根果 Grassroots & Fruit</div>
   </div>
 
-  <!-- DAY 4 -->
   <div class="day-card">
-    <div class="day-head">
-      <div class="day-num" style="background:#ece8ff;color:#5018b8;">4</div>
-      <div>
-        <div class="day-name">5/24 日｜自由行 + 回程</div>
-        <div class="day-sub-txt">馬公市區 → 高雄小港</div>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-num" style="background:#ece8ff;color:#5018b8;">4</div><div><div class="day-name">5/24 日｜自由行 + 回程</div><div class="day-sub-txt">馬公市區 → 高雄小港</div></div></div>
     <div class="timeline">
-      <div class="trow">
-        <div class="tleft"><span class="ttime">09:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">早上自由活動</div>
-          <div class="tnote">中央老街買伴手禮<br>媽宮古城散步<br>馬公第一漁港看早市</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">11:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">午餐（最後一餐，擇一）</div>
-          <div class="tnote">① Yummy 楊米｜週日有開，10:30–13:30 ⭐ 推薦<br>② 蔡記蔬菜食堂｜週日有開，10:30–14:00</div>
-          <span class="tag p-green">素食</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">Check out 澎澄飯店</div>
-          <div class="tnote">退房，行李可寄放繼續玩</div>
-          <span class="tag p-purple">退房</span>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">16:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">前往馬公機場</div>
-          <div class="tnote">建議提早 90 分鐘到<br>花火節旺季安檢較慢</div>
-        </div>
-      </div>
-      <div class="trow">
-        <div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div></div></div>
-        <div class="tbody">
-          <div class="ttitle">飛返高雄小港</div>
-          <div class="tnote">飛行約 30 分，約 19:00 抵達</div>
-          <span class="tag p-blue">回程</span>
-        </div>
-      </div>
+      <div class="trow"><div class="tleft"><span class="ttime">09:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">早上自由活動</div><div class="tnote">中央老街買伴手禮 · 媽宮古城散步 · 第一漁港看早市</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">11:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐（最後一餐）</div><div class="tnote">① Yummy 楊米｜週日 10:30–13:30 ⭐ 推薦<br>② 蔡記蔬菜食堂｜週日 10:30–14:00</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">Check out 澎澄飯店</div><div class="tnote">退房，行李可寄放繼續玩</div><span class="tag p-purple">退房</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">16:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">前往馬公機場</div><div class="tnote">建議提早 90 分鐘，旺季安檢較慢</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div></div></div><div class="tbody"><div class="ttitle">飛返高雄小港</div><div class="tnote">飛行約 30 分，約 19:00 抵達</div><span class="tag p-blue">回程</span></div></div>
     </div>
   </div>
 
-  <!-- 素食快查 -->
   <div class="veg-card">
-    <div class="veg-head">
-      <div class="veg-title">素食餐廳快查</div>
-      <div class="veg-subtitle">出發前確認營業日，避免撲空</div>
-    </div>
-    <div class="veg-item">
-      <div class="veg-name">常和 Building & Light Meal</div>
-      <div class="veg-info">治平路 26-1 號｜僅週三、四、五營業<br>✅ 5/21四、5/22五｜❌ 5/23六公休</div>
-      <span class="badge-open">週三四五 11:30–20:30</span>
-    </div>
-    <div class="veg-item">
-      <div class="veg-name">Yummy 楊米植物性素食</div>
-      <div class="veg-info">民族路 2-1 號｜評分 5.0 ⭐<br>公休：週二｜其餘每天都開<br>✅ 5/21四 5/22五 5/23六 5/24日 全OK</div>
-      <span class="badge-open">週一三四五六日 10:30–13:30</span>
-    </div>
-    <div class="veg-item">
-      <div class="veg-name">蔡記蔬菜食堂</div>
-      <div class="veg-info">文昌街 11 號｜秤重自助，最平價<br>每天都開，最穩定的備選</div>
-      <span class="badge-open">每日 10:30–14:00 / 16:30–19:30</span>
-    </div>
-    <div class="veg-item">
-      <div class="veg-name">根果 Grassroots & Fruit</div>
-      <div class="veg-info">文光路 131 號｜評分 4.9 ⭐<br>公休：週三｜✅ 5/23六晚餐 完全合適</div>
-      <span class="badge-open">週一二四五六日 18:00–23:00</span>
-    </div>
-    <div class="veg-item">
-      <div class="veg-name">七美島午餐</div>
-      <div class="veg-info">島上幾乎無素食選擇<br>請 Day 2 出發前在馬公打包便當或乾糧帶上船</div>
-      <span class="badge-warn">Day 2 出發前務必備好</span>
-    </div>
+    <div class="veg-head"><div class="veg-title">素食餐廳快查</div><div class="veg-subtitle">出發前確認營業日，避免撲空</div></div>
+    <div class="veg-item"><div class="veg-name">常和 Building & Light Meal</div><div class="veg-info">治平路 26-1 號｜僅週三四五<br>✅ 5/21四、5/22五｜❌ 5/23六公休</div><span class="badge-open">週三四五 11:30–20:30</span></div>
+    <div class="veg-item"><div class="veg-name">Yummy 楊米植物性素食</div><div class="veg-info">民族路 2-1 號｜評分 5.0 ⭐｜公休週二<br>✅ 四天全部可用</div><span class="badge-open">週一三四五六日 10:30–13:30</span></div>
+    <div class="veg-item"><div class="veg-name">蔡記蔬菜食堂</div><div class="veg-info">文昌街 11 號｜秤重自助，最穩定備選，每天都開</div><span class="badge-open">每日 10:30–14:00 / 16:30–19:30</span></div>
+    <div class="veg-item"><div class="veg-name">根果 Grassroots & Fruit</div><div class="veg-info">文光路 131 號｜評分 4.9 ⭐｜公休週三<br>✅ 5/23六晚餐完全合適</div><span class="badge-open">週一二四五六日 18:00–23:00</span></div>
+    <div class="veg-item"><div class="veg-name">七美島午餐</div><div class="veg-info">島上幾乎無素食，Day 2 出發前請在馬公打包便當帶上船</div><span class="badge-warn">Day 2 出發前務必備好</span></div>
   </div>
 
-  <!-- 注意事項 -->
   <div class="tips-card">
-    <div class="tips-head">
-      <div class="tips-title">出發前注意事項</div>
+    <div class="tips-head"><div class="tips-title">出發前注意事項</div></div>
+    <div class="tips-item"><div class="tips-num">1</div><div class="tips-text"><strong>七美船票</strong>｜花火節旺季一票難求，現在就訂！KKday、客來樂、菊島旅遊均可</div></div>
+    <div class="tips-item"><div class="tips-num">2</div><div class="tips-text"><strong>開船時間</strong>｜前一天 17:00 前以 LINE 通知，請保持手機暢通</div></div>
+    <div class="tips-item"><div class="tips-num">3</div><div class="tips-text"><strong>機車駕照</strong>｜七美島騎機車需出示駕照，無照改搭遊覽車（加 200 元）</div></div>
+    <div class="tips-item"><div class="tips-num">4</div><div class="tips-text"><strong>雨天判斷</strong>｜Day 2 前一晚看天氣，確定下雨改走水族館備案</div></div>
+    <div class="tips-item"><div class="tips-num">5</div><div class="tips-text"><strong>花火節</strong>｜20:30 前抵達觀音亭卡位，結束後步行回飯店（約 15 分）比塞車快</div></div>
+  </div>
+  <div class="footer">方案一：七美跳島版｜澎湖 2026</div>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page1">
+<div class="container">
+  <div class="trip-header">
+    <div class="trip-title">方案二：南北環深度版</div>
+    <div class="trip-sub">5/21（四）— 5/24（日）｜住澎澄飯店 x3 晚</div>
+    <div class="pills">
+      <span class="pill p-green">全程素食</span>
+      <span class="pill p-amber">花火節 七龍珠Z</span>
+      <span class="pill p-teal">南北環深度遊</span>
+      <span class="pill p-purple">澎澄飯店</span>
     </div>
-    <div class="tips-item">
-      <div class="tips-num">1</div>
-      <div class="tips-text"><strong>七美跳島船票</strong><br>花火節旺季一票難求，現在就訂！可上 KKday、客來樂、菊島旅遊預訂</div>
-    </div>
-    <div class="tips-item">
-      <div class="tips-num">2</div>
-      <div class="tips-text"><strong>開船時間</strong><br>前一天 17:00 前會以 LINE 通知確切時間，請保持手機暢通</div>
-    </div>
-    <div class="tips-item">
-      <div class="tips-num">3</div>
-      <div class="tips-text"><strong>機車駕照</strong><br>七美島騎機車需出示駕照，無照可改搭遊覽車（每人加 200 元）</div>
-    </div>
-    <div class="tips-item">
-      <div class="tips-num">4</div>
-      <div class="tips-text"><strong>雨天判斷</strong><br>Day 2 前一晚看天氣，確定下雨改走水族館備案，不用提前決定</div>
-    </div>
-    <div class="tips-item">
-      <div class="tips-num">5</div>
-      <div class="tips-text"><strong>花火節觀賞</strong><br>建議 20:30 前抵達觀音亭卡位，21:00 正式施放，結束後交通管制請多預留時間</div>
+  </div>
+  <div class="notice-green">🏨 澎澄飯店對面就是南海遊客中心，地理位置極佳<br>🎆 5/21（四）花火節，看完散步 15 分鐘回飯店</div>
+
+  <div class="day-card">
+    <div class="day-head"><div class="day-num" style="background:#e2f5d0;color:#236b08;">1</div><div><div class="day-name">5/21 四｜抵達 + 花火節</div><div class="day-sub-txt">高雄小港 → 澎湖馬公</div></div></div>
+    <div class="timeline">
+      <div class="trow"><div class="tleft"><span class="ttime">12:15</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">抵達馬公機場</div><div class="tnote">租車領取，放行李到澎澄飯店（約 15 分鐘）</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">13:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐（擇一）</div><div class="tnote">① 舒安健康輕食｜五穀飯盒、麵食，清爽適合剛下飛機<br>② 紫光素食｜傳統素食，選項多出餐快</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">15:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">中央老街漫步</div><div class="tnote">天后宮 · 四眼井 · 老街藥膳蛋（現場確認是否素食）· 澎湖花生酥</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">晚餐：常和 Building & Light Meal</div><div class="tnote">治平路 26-1 號｜週四有開，建議提前預約</div><span class="tag p-green">全素</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">20:20</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div></div></div><div class="tbody"><div class="ttitle">🎆 花火節 七龍珠Z 主題</div><div class="tnote">觀音亭休閒園區｜21:00 施放<br>看完散步回飯店約 15–20 分，比塞車快</div><span class="tag p-amber">花火節必看</span></div></div>
     </div>
   </div>
 
-  <div class="footer">澎湖四日遊 2026｜5/21–5/24｜玩得開心！</div>
+  <div class="day-card">
+    <div class="day-head"><div class="day-num" style="background:#daeaff;color:#1a48c4;">2</div><div><div class="day-name">5/22 五｜北環島壯麗景點</div><div class="day-sub-txt">中屯 → 西嶼 → 白沙</div></div></div>
+    <div class="timeline">
+      <div class="trow"><div class="tleft"><span class="ttime">09:30</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">出發北環</div><div class="tnote">中屯風車 → 跨海大橋（必拍地標）</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐（西嶼 / 二崁）</div><div class="tnote">二崁聚落：杏仁茶 + 土豆粿（素食友善）<br>正餐可回程在白沙鄉蔬適圈解決</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">西嶼深度景點</div><div class="tnote">大菓葉柱狀玄武岩 · 二崁古厝 · 小門鯨魚洞</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div><div class="tbody"><div class="ttitle">晚餐：蔬適圈 Veggie Circle</div><div class="tnote">馬公市區｜素食披薩、義大利麵，環境舒適，評價高</div><span class="tag p-green">全素</span></div></div>
+    </div>
+  </div>
 
+  <div class="day-card">
+    <div class="day-head"><div class="day-num" style="background:#fef0cc;color:#7a4800;">3</div><div><div class="day-name">5/23 六｜跳島七美 + 望安</div><div class="day-sub-txt">南海跳島一日遊</div></div></div>
+    <div class="timeline">
+      <div class="trow"><div class="tleft"><span class="ttime">08:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">出發｜南海遊客中心搭船</div><div class="tnote">飯店過馬路即到，極方便</div><span class="tag p-blue">跳島</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">10:00</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">七美島</div><div class="tnote">雙心石滬 · 小台灣 · 龍埕海蝕平台</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">七美島午餐</div><div class="tnote">訂票時告知船家有素食者，島上合作餐廳可準備素食炒飯 / 炒麵</div><span class="tag p-amber">訂票時預先告知</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">13:30</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">望安島</div><div class="tnote">天台山 · 花宅古厝 · 綠蠵龜保育中心</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">15:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">回到馬公</div><div class="tnote">回飯店休息，或逛對面 Pier3 昇恆昌免稅店</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div></div></div><div class="tbody"><div class="ttitle">晚餐：小口一口素食輕食</div><div class="tnote">特色簡餐＋現打果汁，口味清爽多元</div><span class="tag p-green">全素</span></div></div>
+    </div>
+    <div class="tip-box">訂七美跳島票時請備註「有素食者」，請船家協助預訂島上素食餐點</div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-head"><div class="day-num" style="background:#ece8ff;color:#5018b8;">4</div><div><div class="day-name">5/24 日｜南環 + 採買 + 回程</div><div class="day-sub-txt">風櫃 → 山水 → 鎖港 → 高雄</div></div></div>
+    <div class="timeline">
+      <div class="trow"><div class="tleft"><span class="ttime">09:30</span><div class="tdot-wrap"><div class="tdot" style="background:#1a48c4;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">南環行程</div><div class="tnote">風櫃聽濤（幽浮涼亭打卡）· 山水沙灘 · 鎖港石敢當</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">12:00</span><div class="tdot-wrap"><div class="tdot" style="background:#236b08;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">午餐：仁愛路素食麵</div><div class="tnote">在地老店，麵體 Q 彈搭配素滷味，簡單有澎湖味</div><span class="tag p-green">素食</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">14:00</span><div class="tdot-wrap"><div class="tdot" style="background:#d97706;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">採買伴手禮</div><div class="tnote">黑糖糕 · 花生酥 · 鹹餅<br>注意：購買前確認包裝是否含豬油</div><span class="tag p-amber">豬油確認</span></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">16:00</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div><div class="tline"></div></div></div><div class="tbody"><div class="ttitle">前往馬公機場</div><div class="tnote">還車、辦理登機，建議提早 90 分</div></div></div>
+      <div class="trow"><div class="tleft"><span class="ttime">18:30</span><div class="tdot-wrap"><div class="tdot" style="background:#5018b8;"></div></div></div><div class="tbody"><div class="ttitle">飛返高雄小港</div><div class="tnote">飛行約 30 分，約 19:00 抵達</div><span class="tag p-blue">回程</span></div></div>
+    </div>
+  </div>
+
+  <div class="tips-card">
+    <div class="tips-head"><div class="tips-title">顧問提醒</div></div>
+    <div class="tips-item"><div class="tips-num">1</div><div class="tips-text"><strong>花火節後別搶車</strong>｜看完散步回澎澄（約 15 分），比在車陣中等更快</div></div>
+    <div class="tips-item"><div class="tips-num">2</div><div class="tips-text"><strong>備糧很重要</strong>｜西嶼、七美素食極少，包包備餅乾或素肉乾，或在超商買飯糰帶走</div></div>
+    <div class="tips-item"><div class="tips-num">3</div><div class="tips-text"><strong>防曬必備</strong>｜5 月底澎湖太陽毒，遮陽帽＋防曬外套比防曬乳有效</div></div>
+    <div class="tips-item"><div class="tips-num">4</div><div class="tips-text"><strong>素食餐廳預約</strong>｜花火節期間市區素食店位子搶手，建議提前電話或 Facebook 預約</div></div>
+    <div class="tips-item"><div class="tips-num">5</div><div class="tips-text"><strong>伴手禮確認素食</strong>｜買澎湖餅類零食前先看包裝，部分產品含豬油</div></div>
+  </div>
+  <div class="footer">方案二：南北環深度版｜澎湖 2026</div>
 </div>
+</div>
+
+<script>
+function switchTab(idx){
+  document.querySelectorAll('.tab-btn').forEach(function(b,i){b.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.page').forEach(function(p,i){p.classList.toggle('active',i===idx);});
+  window.scrollTo(0,0);
+}
+</script>
 </body>
 </html>
